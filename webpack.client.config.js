@@ -1,8 +1,8 @@
-const webpack = require('webpack')
-const VueSSRClientPlugin = require('vue-server-renderer/client-plugin')
-const {VueLoaderPlugin} = require('vue-loader');
+const VueSSRClientPlugin = require('vue-server-renderer/client-plugin');
+const {merge} = require('webpack-merge');
+const base = require('./webpack.base.config');
 
-module.exports = {
+module.exports = merge(base, {
 	entry: __dirname + "/src/entry-client.js",
 	output: {
 		path: __dirname + "/dist",
@@ -10,33 +10,6 @@ module.exports = {
 		publicPath: "/"
 	},
 	plugins: [
-		// new webpack.optimize.CommonsChunkPlugin({
-		// 	name: "manifest",
-		// 	minChunks: Infinity
-		// }),
-		// Плагин генерирует `vue-ssr-client-manifest.json` в output-каталоге
-		new VueSSRClientPlugin(),
-		new VueLoaderPlugin()
+		new VueSSRClientPlugin()
 	],
-	module: {
-		rules: [
-			{
-				test: /\.vue$/,
-				loader: "vue-loader"
-			},
-			{
-				test: /\.css$/,
-				use: [
-					'vue-style-loader',
-					'css-loader'
-				]
-			}
-		]
-	},
-	resolve: {
-		extensions: ['.js', ".vue"],
-		alias: {
-			"@": __dirname + "/src"
-		}
-	}
-}
+});

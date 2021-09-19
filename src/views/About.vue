@@ -1,6 +1,7 @@
 <template>
-	<div>
+	<div class="about">
 		about page
+		<button>click!</button>
 	</div>
 </template>
 
@@ -10,6 +11,8 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style lang="scss" scoped>
+	.about{
+		color: blue;
+	}
 </style>
