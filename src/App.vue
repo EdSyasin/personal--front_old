@@ -1,12 +1,6 @@
 <template>
 	<div class="hello-world" id="app">
-		<ul>
-			<li><router-link to="/">главная</router-link></li>
-			<li><router-link to="/about">о приложении</router-link></li>
-		</ul>
-		<main>
-			<router-view></router-view>
-		</main>
+		<router-view></router-view>
 	</div>
 </template>
 
